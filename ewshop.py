@@ -1,5 +1,3 @@
-#@author: sareeliu
-#@date: 2021/5/6 19:40
 import requests
 
 def login(email,password):

@@ -1,5 +1,3 @@
-#@author: sareeliu
-#@date: 2021/5/8 7:49
 import requests, rsa, base64
 
 

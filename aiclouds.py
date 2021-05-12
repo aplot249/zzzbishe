@@ -1,5 +1,3 @@
-#@author: sareeliu
-#@date: 2021/5/5 20:28
 import requests,re
 
 def get_token():

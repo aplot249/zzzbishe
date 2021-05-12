@@ -17,7 +17,7 @@ def handle(val):
     file = tkinter.filedialog.askopenfilename()  # 返回文件名
     print("密码本为："+file)
     with open(file) as f:
-        data = f.readlines()
+        data = [item for item in f.readlines() if item != '\n']
     print("密码本内容如下：")
     [print(item.strip("\n")) for item in data]
     for item in data:
