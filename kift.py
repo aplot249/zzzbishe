@@ -47,8 +47,8 @@ def login(username,password):
 
 def logout(username,password):
     data = {
-        "name":username,
-        "passwd":password
+        "name": username,
+        "passwd": password
     }
     res = requests.post("https://deluser.chuanyun101.com/index/",data=data)
     if res.json()['status'] == 'success':

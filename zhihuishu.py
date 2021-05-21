@@ -15,5 +15,5 @@ def login(account,password):
         print(str(account) + "---" + str(password) + "，登录失败")
 
 if __name__ == "__main__":
-    login("17868810687","qq1010351486")
+    login("18268810534","123456")
     # {"pwdErrorCount": 1, "status": -2}
