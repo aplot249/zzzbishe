@@ -5,19 +5,43 @@ import threading
 
 window = tk.Tk()    # 第1步，实例化object，建立窗口window
 window.title('李瑶毕业设计')   # 第2步，给窗口的可视化起名字
-window.geometry('500x370')  # # 第3步，设定窗口的大小(长 * 宽)，这里的乘是小x
+window.geometry('500x600')  # # 第3步，设定窗口的大小(长 * 宽)，这里的乘是小x
 window.resizable(False, False)  # 设置窗口大小不可改变
 
 l1 = tk.Label(window, text='老师好！这是李瑶的毕业设计。\n利用爬虫，判断账号密码\n是否在以下网站注册过。', bg='white', font=('Arial', 12), width=30, height=3)    #在图形界面上设定标签
 # 说明： bg为背景，font为字体，width为长，height为高，这里的长和高是字符的长和高，比如height=2,就是标签有2个字符这么高
 l1.pack()  # 放置标签，Label内容content区域放置位置，自动调节尺寸，# 放置lable的方法有：1）l.pack(); 2)l.place()
 
+
+info = tk.Label(window,bg='white',font=('Arial', 12), width=30,)
+info.pack()
+# 第5步，用户信息
+tk.Label(info, text='用户名：', font=('Arial', 14)).grid(row=0, column=0)
+tk.Label(info, text='密码：', font=('Arial', 14)).grid(row=1, column=0)
+# 第6步，用户登录输入框entry
+# 用户名
+var_usr_name = tk.StringVar()
+# var_usr_name.set('')
+entry_usr_name = tk.Entry(info, textvariable=var_usr_name, font=('Arial', 14))
+entry_usr_name.grid(row=0, column=1)
+# 用户密码
+var_usr_pwd = tk.StringVar()
+entry_usr_pwd = tk.Entry(info, textvariable=var_usr_pwd, font=('Arial', 14), show='*')
+entry_usr_pwd.grid(row=1, column=1)
+
+
 def handle(val):
-    print("请选择密码本：")
-    file = tkinter.filedialog.askopenfilename()  # 返回文件名
-    print("密码本为："+file)
-    with open(file) as f:
-        data = [item for item in f.readlines() if item != '\n']
+    while True:
+        try:
+            print("请选择密码本：")
+            file = tkinter.filedialog.askopenfilename()  # 返回文件名
+            print("密码本为：" + file)
+            with open(file) as f:
+                data = [item for item in f.readlines() if item != '\n']
+        except FileNotFoundError:
+            print("文件读取失败！")
+        else:
+            break
     print("密码本内容如下：")
     [print(item.strip("\n")) for item in data]
     for item in data:
